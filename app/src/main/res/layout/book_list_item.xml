@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:orientation="horizontal"
+    android:paddingEnd="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingStart="16dp">
+
+    <TextView
+        android:id="@+id/book_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:fontFamily="sans-serif-medium"
+        android:maxLines="2"
+        android:textAllCaps="true"
+        android:textColor="@color/textColor"
+        android:textSize="16sp"
+        tools:text="Long placeholder for a title that should wrap to more than 2 lines of text" />
+
+    <TextView
+        android:id="@+id/separator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/textColor"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        tools:text="by" />
+
+    <TextView
+        android:id="@+id/book_author"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:maxLines="2"
+        android:textColor="@color/textColor"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        tools:text="Long placeholder for an author that should wrap to more than 2 lines of text" />
+
+</LinearLayout>
