@@ -16,10 +16,12 @@ public class BookLoader  extends AsyncTaskLoader<List<Book>> {
 
     /** Query URL */
     private String mUrl;
+    private String mSearchQuery;
 
-    public BookLoader(Context context, String url) {
+    public BookLoader(Context context, String url, String searchQuery) {
         super(context);
         mUrl = url;
+        mSearchQuery = searchQuery;
     }
 
     @Override
@@ -37,7 +39,7 @@ public class BookLoader  extends AsyncTaskLoader<List<Book>> {
         }
 
         // Perform the network request, parse the response, and extract a list of books.
-        List<Book> books = Utils.fetchBookData(mUrl);
+        List<Book> books = Utils.fetchBookData(mUrl + mSearchQuery);
         return books;
     }
 

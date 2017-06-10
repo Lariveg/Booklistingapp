@@ -151,29 +151,29 @@ public final class Utils {
             // Create a JSONObject from the JSON response string
             JSONObject baseJsonResponse = new JSONObject(bookJSON);
 
-            // Extract the JSONArray associated with the key called "features",
-            // which represents a list of features (or earthquakes).
-            JSONArray bookArray = baseJsonResponse.getJSONArray("features");
+            // Extract the JSONArray associated with the key called "items",
+            // which represents a list of books.
+            JSONArray bookArray = baseJsonResponse.getJSONArray("items");
 
-            // For each earthquake in the earthquakeArray, create an {@link Earthquake} object
+            // For each book in the bookArray, create an {@link Book} object
             for (int i = 0; i < bookArray.length(); i++) {
 
                 // Get a single earthquake at position i within the list of earthquakes
                 JSONObject currentBook = bookArray.getJSONObject(i);
 
-                // For a given earthquake, extract the JSONObject associated with the
-                // key called "properties", which represents a list of all properties
-                // for that earthquake.
-                JSONObject properties = currentBook.getJSONObject("properties");
+                // For a given book, extract the JSONObject associated with the
+                // key called "volumeInfo", which represents a list of all properties
+                // for that book.
+                JSONObject properties = currentBook.getJSONObject("volumeInfo");
 
-                // Extract the value for the key called "mag"
-                String title = properties.getString("author");
+                // Extract the value for the key called "authors"
+                String authors = properties.getString("authors");
 
-                // Extract the value for the key called "place"
-                String author = properties.getString("title");
+                // Extract the value for the key called "title"
+                String title = properties.getString("title");
 
                 // Create a new {@link Book} object with the title and the author from the JSON response.
-                Book book = new Book(title, author);
+                Book book = new Book(title, authors);
 
                 // Add the new {@link Book} to the list of books.
                 books.add(book);
@@ -186,7 +186,7 @@ public final class Utils {
             Log.e("QueryUtils", "Problem parsing the book JSON results", e);
         }
 
-        // Return the list of earthquakes
+        // Return the list of books
         return books;
     }
 
