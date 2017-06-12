@@ -167,7 +167,8 @@ public final class Utils {
                 JSONObject properties = currentBook.getJSONObject("volumeInfo");
 
                 // Extract the value for the key called "authors"
-                String authors = properties.getString("authors");
+                String authorsArray = properties.getString("authors");
+                String authors = authorsArray.substring(1, authorsArray.length() - 1);
 
                 // Extract the value for the key called "title"
                 String title = properties.getString("title");

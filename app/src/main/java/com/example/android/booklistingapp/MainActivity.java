@@ -82,6 +82,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        progressSpinner = findViewById(R.id.loading_indicator);
+
         // Get a reference to the ConnectivityManager to check state of network connectivity
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -101,7 +103,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         } else {
             // Otherwise, display error
             // First, hide loading indicator so error message will be visible
-            progressSpinner= findViewById(R.id.loading_indicator);
             progressSpinner.setVisibility(View.GONE);
 
             // Update empty state with no connection error message
@@ -109,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         }
 
         // Find a reference to the {@link ListView} in the layout
-        ListView bookListView = (ListView) findViewById(R.id.list);
+        final ListView bookListView = (ListView) findViewById(R.id.list);
 
         mEmptyTextView = (TextView) findViewById(R.id.empty_view);
         bookListView.setEmptyView(mEmptyTextView);
@@ -135,7 +136,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
                 mEmptyTextView.setText("");
                 progressSpinner.setVisibility(View.VISIBLE);
-                getLoaderManager().restartLoader(BOOK_LOADER_ID, null, MainActivity.this);
+
+                // Restart the loader
+                getLoaderManager().restartLoader(0, null,MainActivity.this);
             }
         });
 
