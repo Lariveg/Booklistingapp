@@ -166,12 +166,23 @@ public final class Utils {
                 // for that book.
                 JSONObject properties = currentBook.getJSONObject("volumeInfo");
 
+                String authors;
+                String title;
+
                 // Extract the value for the key called "authors"
-                String authorsArray = properties.getString("authors");
-                String authors = authorsArray.substring(1, authorsArray.length() - 1);
+                if(properties.has("authors")){
+                    String authorsArray = properties.getString("authors");
+                    authors = authorsArray.substring(1, authorsArray.length() - 1);
+                } else {
+                    authors = "No authors were found.";
+                }
 
                 // Extract the value for the key called "title"
-                String title = properties.getString("title");
+                if(properties.has("authors")){
+                    title = properties.getString("title");
+                } else {
+                    title = "No title was found.";
+                }
 
                 // Create a new {@link Book} object with the title and the author from the JSON response.
                 Book book = new Book(title, authors);

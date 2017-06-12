@@ -8,5 +8,5 @@
     <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
     <string name="no_internet_connection">No internet connection.</string>
 
-    <string name="by">by</string>
+    <string name="no_authors">No value for authors.</string>
 </resources>
